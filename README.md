@@ -22,14 +22,14 @@ pip install -r requirements.txt
 cd ..
 ```
 
-* **Install Docker Scripts**:
+**Install Docker Scripts**:
 Clone the `SWE-bench-docker` repository, which is required for managing evaluation containers.
 
 ```bash
 git clone https://github.com/aorwall/SWE-bench-docker
 ```
 
-* **⚠️ Apply Patch**:
+**🔩 Apply Patch**:
 You **MUST** overwrite the Aider library with the patched version located in `backups/aider`. This fixes specific bugs encountered during SWE-bench execution.
 
 ```bash
@@ -39,7 +39,7 @@ rm -rf "$SITE_PKGS/aider"
 cp -r backups/aider "$SITE_PKGS/"
 ```
 
-* **⚠️ Apply Custom Harness**:
+**🔩 Apply Custom Harness**:
 Replace the default harness with our custom version that includes retry logic.
 
 ```bash
@@ -51,12 +51,12 @@ cp harness-retry.py aider-swe-bench/
 
 Edit the `run_tem.sh` script to execute benchmark tasks.
 
-* **Command**:
+**Command**:
 ```bash
 ./run_tem.sh
 ```
 
-* **Trace Forwarding**:
+**Trace Forwarding**:
 * **DeepSeek**: Traces are automatically forwarded to `localhost`.
 * **OpenAI**: Traces are NOT forwarded and must be fetched manually via the dashboard plugin.
 
@@ -65,6 +65,6 @@ Edit the `run_tem.sh` script to execute benchmark tasks.
 If using OpenAI models, follow these steps to extract the trace:
 
 1. **Install Plugin**: Install the Chrome browser extension from the `xpi/` directory.
-2. **Access Logs / 访问日志**: Go to [OpenAI API Logs](https://platform.openai.com/logs?api=chat-completions). 
-3. **Export / 导出**: Click the plugin button on a log entry and select **"Export Trace"** to download the trace data.
-4. **Convert / 转换**: Save the trace to the appropriate directory and run the conversion script (see `run_swe_task.py` for automated conversion).
+2. **Access Logs**: Go to [OpenAI API Logs](https://platform.openai.com/logs?api=chat-completions). 
+3. **Export**: Click the plugin button on a log entry and select **"Export Trace"** to download the trace data.
+4. **Convert**: Save the trace to the appropriate directory and run the conversion script (see `run_swe_task.py` for automated conversion).
